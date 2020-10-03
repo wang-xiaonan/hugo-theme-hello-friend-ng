@@ -1,4 +1,6 @@
-<header class="header">
+{{ block "header-display" . }}
+<header class="header" {{ if .IsHome }}style="display: none;"{{ end }}>
+{{ end }}
     <span class="header__inner">
         {{ partial "logo.html" . }}
 

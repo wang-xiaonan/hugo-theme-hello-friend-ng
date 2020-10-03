@@ -23,3 +23,21 @@ themeToggle.addEventListener("click", () => {
     ? metaThemeColor.setAttribute("content", "#252627")
     : metaThemeColor.setAttribute("content", "#fafafa");
 });
+
+// triple click content change theme
+const contentDiv = document.querySelector(".theme-tc");
+var count = 0;
+contentDiv.addEventListener("click", () => {
+  if (count > 0) {
+    if (count == 2) {
+      themeToggle.click();
+      count = 0;
+    }
+    count++;
+  } else {
+    count++;
+    setTimeout(() => {
+      count = 0;
+    }, 420);
+  }
+});

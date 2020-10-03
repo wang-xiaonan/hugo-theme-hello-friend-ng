@@ -1,5 +1,5 @@
 {{ define "main" }}
-    <main aria-role="main">
+    <main class="user-select-none theme-tc" aria-role="main">
         <div>
             {{ if .Site.Params.Portrait.Path }}
                <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
@@ -15,6 +15,16 @@
                     {{ partial "social-icons.html" . }}
                 </div>
             {{- end }}
+
+            {{ if len .Site.Menus }}
+            <nav class="menu-list">
+                <ul class="menu-list__inner">
+                    {{range .Site.Menus.main.Reverse }}
+                        <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                    {{end }}
+                </ul>
+            </nav>
+            {{ end }}
         </div>
     </main>
 {{ end }}
